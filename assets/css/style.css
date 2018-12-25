@@ -1,0 +1,39 @@
+.blog-alert{
+  margin-top: 10px;
+}
+.post-date{
+  background: #f4f4f4;
+  padding: 4px;
+  margin: 3px;
+  display: block;
+}
+
+.image-container{
+  margin: 0 auto;
+}
+
+.thumb{
+  max-width: 100%;
+}
+
+.pagination-links{
+  margin: 30px 0;
+}
+
+a.pagination-link, .pagination-links strong{
+  padding: 8px 13px;
+  margin: 5px;
+  background: #f4f4f4;
+  border: 1px #ccc solid;
+}
+
+.cat-delete{
+  display: inline;
+}
+
+footer{
+  padding: 20px;
+  background: #18BC9C !important;
+  color: #fff;
+  margin-top: 20px;
+}
