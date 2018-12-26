@@ -11,6 +11,7 @@
       
       if($slug === FALSE){
         $this->db->order_by('posts.id', 'DESC');
+        $this->db->join('users', 'users.id = posts.user_id');
         $this->db->join('categories', 'categories.id = posts.category_id');
         $query = $this->db->get('posts');
         return $query->result_array();
