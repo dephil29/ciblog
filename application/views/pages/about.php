@@ -1,2 +1,2 @@
 <h2><?= $title ?></h2>
-<p>This is ciBlog 1.0</p>
+<p>This is a project to help me get familiar with PHP. It is from <a href="https://www.youtube.com/watch?v=I752ofYu7ag&list=PLillGF-RfqbaP_71rOyChhjeK1swokUIS">this youtube series</a>.</p>

@@ -8,8 +8,8 @@
 </div>
 <?php if($this->session->userdata('user_id') == $post['user_id']): ?>
 <hr>
-<a class="btn btn-secondary" href="edit/<?php echo $post['slug']; ?>">Edit</a>
-<?php echo form_open('/posts/delete/' . $post['id']); ?>
+<a class="btn btn-success" href="edit/<?php echo $post['slug']; ?>">Edit</a>
+<?php echo form_open('/posts/delete/' . $post['id'], array('class' => 'delete-button')); ?>
   <input type="submit" value="Delete" class="btn btn-danger">
 </form>
 <?php endif; ?>
@@ -24,6 +24,9 @@
 <?php endif; ?>
 <hr>
 <h3>Add Comment</h3>
+<?php if($this->session->flashdata('comment_error')): ?>
+  <?php echo '<p class="blog-alert alert alert-success">' . $this->session->flashdata('comment_error') . '</p>'; ?>
+<?php endif; ?>
 <?php echo validation_errors(); ?>
 <?php echo form_open('comments/create/' . $post['id']); ?>
   <div class="form-group">

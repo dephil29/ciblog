@@ -1,6 +1,11 @@
+body{
+  padding-bottom: 20rem;
+}
+
 .blog-alert{
   margin-top: 10px;
 }
+
 .post-date{
   background: #f4f4f4;
   padding: 4px;
@@ -12,8 +17,20 @@
   margin: 0 auto;
 }
 
+.image-container img{
+  max-width: 100%;
+}
+
 .thumb{
   max-width: 100%;
+}
+
+.post-body{
+  margin-top: 10px;
+}
+
+.delete-button{
+  margin-top: 10px;
 }
 
 .pagination-links{

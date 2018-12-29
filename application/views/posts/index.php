@@ -6,7 +6,11 @@
       <img class="thumb" src="<?php echo site_url(); ?>assets/images/posts/<?php echo $post['post_image']; ?>" alt="">
     </div>
     <div class="col-md-9">
-      <small>Posted on: <?php echo $post['created_at']; ?> by <a href="<?php echo site_url('/users/' . $post['username']); ?>"><?php echo $post['username']; ?></a> in <strong><?php echo $post['name']; ?></strong></small>
+      <small>
+        Posted on: <?php echo $post['pca']; ?> 
+        by <strong><?php echo $post['username']; ?></strong>
+        in <strong><?php echo $post['cat_name']; ?></strong>
+      </small>
       <br>
       <?php echo word_limiter($post['body'], 50); ?>
       <br><br>

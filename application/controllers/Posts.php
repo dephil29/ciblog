@@ -4,7 +4,7 @@
       // Pagination config
       $config['base_url'] = base_url() . 'posts/index/' ;
       $config['total_rows'] = $this->db->count_all('posts');
-      $config['per_page'] = 20;
+      $config['per_page'] = 10;
       $config['uri_segment'] = 3;
       $config['attributes'] = array('class' => 'pagination-link');
 
@@ -41,13 +41,10 @@
       if(!$this->session->userdata('logged_in')){
         redirect('users/login');
       }
-
-      $data['title'] = 'Create Post';
+      $data['title'] = 'Create Post';             
       $data['categories'] = $this->post_model->get_categories();
-
       $this->form_validation->set_rules('title', 'Title', 'required');
       $this->form_validation->set_rules('body', 'Body', 'required');
-
       if($this->form_validation->run() === FALSE){
         $this->load->view('templates/header');
         $this->load->view('posts/create', $data);
@@ -55,12 +52,7 @@
       }else{
         $config['upload_path'] = 'C:/xampp/htdocs/ciblog/assets/images/posts/';
         $config['allowed_types'] = 'gif|jpg|png';
-        // $config['max_size'] = '2048';
-        // $config['max_width'] = '500';
-        // $config['max_height'] = '500';
-
         $this->load->library('upload', $config);
-
         if(!$this->upload->do_upload()){
           $errors = array('error' => $this->upload->display_errors());
           $post_image = 'noimage.jpg';
@@ -68,12 +60,10 @@
           $data = array('upload_data' => $this->upload->data());
           $post_image = $_FILES['userfile']['name'];
         }
-
         $this->post_model->create_post($post_image);
         $this->session->set_flashdata('post_created', 'Your post has been created');
         redirect('posts');
       }
-
     }
 
     public function delete($id){
@@ -111,11 +101,21 @@
     }
 
     public function update(){
-      // Check login
       if(!$this->session->userdata('logged_in')){
         redirect('users/login');
+      }else{
+        $config['upload_path'] = 'C:/xampp/htdocs/ciblog/assets/images/posts/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+        if(!$this->upload->do_upload()){
+          $errors = array('error' => $this->upload->display_errors());
+          $post_image = 'noimage.jpg';
+        }else{
+          $data = array('upload_data' => $this->upload->data());
+          $post_image = $_FILES['userfile']['name'];
+        }
       }
-      $this->post_model->update_post();
+      $this->post_model->update_post($post_image);
       $this->session->set_flashdata('post_updated', 'Your post has been updated');
       redirect('posts');
     }
