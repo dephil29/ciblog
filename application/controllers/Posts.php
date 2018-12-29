@@ -50,7 +50,7 @@
         $this->load->view('posts/create', $data);
         $this->load->view('templates/footer');      
       }else{
-        $config['upload_path'] = 'C:/xampp/htdocs/ciblog/assets/images/posts/';
+        $config['upload_path'] = 'assets/images/posts/';
         $config['allowed_types'] = 'gif|jpg|png';
         $this->load->library('upload', $config);
         if(!$this->upload->do_upload()){
